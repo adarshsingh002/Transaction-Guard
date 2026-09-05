@@ -7,3 +7,4 @@ python-louvain
 faker
 streamlit
 pytest
+streamlit-option-menu

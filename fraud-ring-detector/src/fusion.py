@@ -42,9 +42,7 @@ def fuse_scores(layer1_outputs: List[Layer1Output], df_transactions: pd.DataFram
         # and allow rings to trickle transactions under the radar.
         final_score = max(layer1_score, ring_score if ring_score is not None else 0.0)
         
-        if final_score >= config.THRESHOLD_BLOCK:
-            action = "block"
-        elif final_score >= config.THRESHOLD_REVIEW:
+        if final_score >= config.THRESHOLD_REVIEW:
             action = "flag_for_review"
         else:
             action = "log_only"

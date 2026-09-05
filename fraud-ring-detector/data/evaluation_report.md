@@ -45,7 +45,7 @@ Transaction flagged heavily by transaction features/rules, independent of ring t
 ```json
 {
   "txn_id": "29bcf7e9-3029-4736-9bc9-2ba102ad46b8",
-  "timestamp": "2026-09-05T09:04:47.871847+00:00",
+  "timestamp": "2026-09-05T17:09:27.426123+00:00",
   "layer1_score": 0.9,
   "layer1_triggers": [
     "high_deviation_flag",
@@ -64,14 +64,14 @@ Transaction looked extremely clean in isolation (low Layer-1 score), but was blo
 ```json
 {
   "txn_id": "33e02dcc-9e03-4d8b-94e6-a41dbdda10d7",
-  "timestamp": "2026-09-05T09:04:47.877237+00:00",
+  "timestamp": "2026-09-05T17:09:27.433465+00:00",
   "layer1_score": 0.0,
   "layer1_triggers": [],
-  "ring_membership": "refined_cluster_182",
+  "ring_membership": "refined_cluster_180",
   "ring_score": 0.5029,
   "final_score": 0.5029,
   "action_taken": "flag_for_review",
-  "explanation": "Transaction flagged for review: account belongs to refined_cluster_182 (7 accounts sharing device, reg_proximity, subnet; synchronized_registration, dense_identifier_sharing)."
+  "explanation": "Transaction flagged for review: account belongs to refined_cluster_180 (7 accounts sharing reg_proximity, subnet, device; synchronized_registration, dense_identifier_sharing)."
 }
 ```
 
@@ -80,7 +80,7 @@ Legitimate transaction from a household/shared device that incorrectly triggered
 ```json
 {
   "txn_id": "1055559a-cbfe-4314-9e9e-d52aa9b4b2ae",
-  "timestamp": "2026-09-05T09:04:47.871091+00:00",
+  "timestamp": "2026-09-05T17:09:27.425344+00:00",
   "layer1_score": 0.5689,
   "layer1_triggers": [],
   "ring_membership": null,
