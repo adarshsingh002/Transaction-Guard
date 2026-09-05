@@ -33,22 +33,42 @@ class Account:
     registration_ip: str
     historical_avg_amount: float
     label_ring_member: bool
+    ring_id: Optional[str]
+    is_ambiguous: bool
+
+class TopFeature(TypedDict):
+    feature: str
+    value: float
+    contribution: str
 
 class Layer1Output(TypedDict):
-    """Layer 1 output schema placeholder"""
     txn_id: str
-    rule_score: float
-    ml_score: float
+    layer1_score: float
+    triggered_rules: List[str]
+    top_features: List[TopFeature]
 
 class ClusterOutput(TypedDict):
-    """Layer 2 cluster output schema placeholder"""
     cluster_id: str
-    account_ids: List[str]
-    risk_score: float
+    member_accounts: List[str]
+    ring_score: float
+    shared_signals: List[str]
+    flags: List[str]
+
+class FusionOutput(TypedDict):
+    txn_id: str
+    layer1_score: float
+    ring_membership: Optional[str]
+    ring_score: Optional[float]
+    final_score: float
+    action: str
 
 class AuditLogEntry(TypedDict):
-    """Audit log entry schema placeholder"""
-    entry_id: str
-    timestamp: datetime
-    action: str
-    details: str
+    txn_id: str
+    timestamp: str
+    layer1_score: float
+    layer1_triggers: List[str]
+    ring_membership: Optional[str]
+    ring_score: Optional[float]
+    final_score: float
+    action_taken: str
+    explanation: str

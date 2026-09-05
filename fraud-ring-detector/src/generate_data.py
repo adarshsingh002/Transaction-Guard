@@ -34,7 +34,9 @@ def generate_normal_accounts(n_accounts):
             "registration_device_id": str(uuid.uuid4()),
             "registration_ip": fake.ipv4(),
             "historical_avg_amount": round(np.random.lognormal(mean=3, sigma=1), 2) + 10,
-            "label_ring_member": False
+            "label_ring_member": False,
+            "ring_id": None,
+            "is_ambiguous": False
         })
     return accounts
 
@@ -42,7 +44,8 @@ def generate_rings(n_rings, accounts_list):
     # We will replace some normal accounts with ring accounts to keep total N constant, 
     # or just add them. Let's add them and we'll adjust the base count if needed.
     ring_accounts = []
-    for _ in range(n_rings):
+    for i in range(n_rings):
+        ring_id = f"syn_ring_{i}"
         ring_size = random.randint(4, 8)
         
         # Determine shared features for this ring
@@ -65,7 +68,9 @@ def generate_rings(n_rings, accounts_list):
                 "registration_device_id": shared_device if shared_device else str(uuid.uuid4()),
                 "registration_ip": shared_ip if shared_ip else fake.ipv4(),
                 "historical_avg_amount": round(np.random.lognormal(mean=4, sigma=0.5), 2),
-                "label_ring_member": True
+                "label_ring_member": True,
+                "ring_id": ring_id,
+                "is_ambiguous": False
             })
     return ring_accounts
 
@@ -85,7 +90,9 @@ def generate_ambiguous_accounts(n_ambiguous):
                 "registration_device_id": shared_device,
                 "registration_ip": shared_ip,
                 "historical_avg_amount": round(np.random.lognormal(mean=3, sigma=1), 2) + 10,
-                "label_ring_member": False
+                "label_ring_member": False,
+                "ring_id": None,
+                "is_ambiguous": True
             })
     
     # Fill the rest with normal accounts
